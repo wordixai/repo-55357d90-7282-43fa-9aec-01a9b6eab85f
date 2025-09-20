@@ -89,6 +89,11 @@ export default {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out'
+			},
+			fontFamily: {
+				'comic': ['Comic Neue', 'cursive'],
+				'marker': ['Permanent Marker', 'cursive'],
+				'fredoka': ['Fredoka One', 'cursive']
 			}
 		}
 	},
