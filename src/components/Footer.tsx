@@ -60,13 +60,13 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <a href="#" className="handwritten text-gray-300 hover:text-white transition-colors text-lg">
-                  Sale Items
-                </a>
+                <Link to="/about" className="handwritten text-gray-300 hover:text-white transition-colors text-lg">
+                  About Us
+                </Link>
               </li>
               <li>
                 <a href="#" className="handwritten text-gray-300 hover:text-white transition-colors text-lg">
-                  Gift Cards
+                  Sale Items
                 </a>
               </li>
             </ul>
