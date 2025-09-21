@@ -1,4 +1,3 @@
-import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import ProductGrid from '@/components/ProductGrid';
 import Newsletter from '@/components/Newsletter';
@@ -9,7 +8,6 @@ import WishlistDrawer from '@/components/WishlistDrawer';
 const Index = () => {
   return (
     <div className="min-h-screen">
-      <Header />
       <Hero />
       <ProductGrid />
       <Newsletter />

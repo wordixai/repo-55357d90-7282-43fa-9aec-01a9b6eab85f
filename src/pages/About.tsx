@@ -1,5 +1,4 @@
 import { Heart, Star, Users, Zap, Globe, Award, Target, Sparkles } from 'lucide-react';
-import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CartDrawer from '@/components/CartDrawer';
 import WishlistDrawer from '@/components/WishlistDrawer';
@@ -74,10 +73,8 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header />
-      
       {/* About Hero Section */}
-      <section className="bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 py-20 comic-dots relative overflow-hidden">
+      <section className="bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-16 left-20 w-20 h-20 bg-yellow-400 rounded-full animate-bounce"></div>
           <div className="absolute top-32 right-24 w-16 h-16 bg-blue-400 rounded-full animate-pulse"></div>
@@ -310,8 +307,6 @@ const About = () => {
 
       {/* Join Our Journey */}
       <section className="py-20 bg-gradient-to-r from-pink-400 via-purple-400 to-orange-400 relative overflow-hidden">
-        <div className="absolute inset-0 comic-dots opacity-30"></div>
-        
         <div className="container mx-auto px-4 text-center relative z-10">
           <h2 className="comic-title text-5xl md:text-6xl text-white mb-6">
             JOIN OUR GROOVY JOURNEY!

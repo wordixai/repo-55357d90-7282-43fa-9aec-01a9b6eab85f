@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Palette, Grid, List, Star, Heart, Eye } from 'lucide-react';
-import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CartDrawer from '@/components/CartDrawer';
 import WishlistDrawer from '@/components/WishlistDrawer';
@@ -339,10 +338,8 @@ const Art = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header />
-      
       {/* Art Hero Section */}
-      <section className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 py-20 comic-dots relative overflow-hidden">
+      <section className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-16 left-24 w-20 h-20 bg-yellow-400 rounded-full animate-pulse"></div>
           <div className="absolute top-40 right-20 w-16 h-16 bg-orange-400 rounded-full animate-bounce"></div>

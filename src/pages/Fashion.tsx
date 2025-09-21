@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Filter, Grid, List, ChevronDown } from 'lucide-react';
-import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CartDrawer from '@/components/CartDrawer';
 import WishlistDrawer from '@/components/WishlistDrawer';
@@ -145,10 +144,8 @@ const Fashion = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header />
-      
       {/* Fashion Hero Section */}
-      <section className="bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 py-20 comic-dots relative overflow-hidden">
+      <section className="bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-10 left-20 w-16 h-16 bg-yellow-400 rounded-full animate-bounce"></div>
           <div className="absolute top-32 right-32 w-12 h-12 bg-blue-400 rounded-full animate-pulse"></div>

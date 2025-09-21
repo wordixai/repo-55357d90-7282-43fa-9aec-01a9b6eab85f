@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { ChevronDown, ChevronUp, HelpCircle, Search, MessageCircle, Mail, Phone } from 'lucide-react';
-import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CartDrawer from '@/components/CartDrawer';
 import WishlistDrawer from '@/components/WishlistDrawer';
@@ -156,10 +155,8 @@ const FAQ = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header />
-      
       {/* FAQ Hero Section */}
-      <section className="bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 py-20 comic-dots relative overflow-hidden">
+      <section className="bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-16 left-24 w-16 h-16 bg-yellow-400 rounded-full animate-bounce"></div>
           <div className="absolute top-32 right-32 w-12 h-12 bg-orange-400 rounded-full animate-pulse"></div>
