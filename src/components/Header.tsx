@@ -2,11 +2,14 @@ import { ShoppingCart, Heart, Search, Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useCartStore } from '@/store/cartStore';
+import { useWishlistStore } from '@/store/wishlistStore';
 import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
-  const { toggleCart, getTotalItems } = useCartStore();
-  const totalItems = getTotalItems();
+  const { toggleCart, getTotalItems: getCartTotal } = useCartStore();
+  const { toggleWishlist, getTotalItems: getWishlistTotal } = useWishlistStore();
+  const cartTotal = getCartTotal();
+  const wishlistTotal = getWishlistTotal();
   const location = useLocation();
 
   return (
@@ -52,9 +55,16 @@ const Header = () => {
             >
               Fashion
             </Link>
-            <a href="#" className="handwritten text-xl text-white hover:text-yellow-200 transition-colors">
+            <Link 
+              to="/art" 
+              className={`handwritten text-xl transition-colors ${
+                location.pathname === '/art' 
+                  ? 'text-yellow-200 font-bold' 
+                  : 'text-white hover:text-yellow-200'
+              }`}
+            >
               Art
-            </a>
+            </Link>
             <a href="#" className="handwritten text-xl text-white hover:text-yellow-200 transition-colors">
               Sale!
             </a>
@@ -70,8 +80,17 @@ const Header = () => {
                 <Search className="h-4 w-4" />
               </Button>
             </div>
-            <Button size="icon" className="bg-white text-black hover:bg-gray-100">
+            <Button 
+              size="icon" 
+              className="bg-white text-black hover:bg-gray-100 relative"
+              onClick={toggleWishlist}
+            >
               <Heart className="h-5 w-5" />
+              {wishlistTotal > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center handwritten animate-pulse">
+                  {wishlistTotal}
+                </span>
+              )}
             </Button>
             <Button 
               size="icon" 
@@ -79,9 +98,9 @@ const Header = () => {
               onClick={toggleCart}
             >
               <ShoppingCart className="h-5 w-5" />
-              {totalItems > 0 && (
+              {cartTotal > 0 && (
                 <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center handwritten animate-bounce">
-                  {totalItems}
+                  {cartTotal}
                 </span>
               )}
             </Button>

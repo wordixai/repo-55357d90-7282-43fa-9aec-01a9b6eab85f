@@ -3,6 +3,7 @@ import { Filter, Grid, List, ChevronDown } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CartDrawer from '@/components/CartDrawer';
+import WishlistDrawer from '@/components/WishlistDrawer';
 import ProductCard from '@/components/ProductCard';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -313,6 +314,7 @@ const Fashion = () => {
 
       <Footer />
       <CartDrawer />
+      <WishlistDrawer />
     </div>
   );
 };

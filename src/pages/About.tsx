@@ -2,6 +2,7 @@ import { Heart, Star, Users, Zap, Globe, Award, Target, Sparkles } from 'lucide-
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CartDrawer from '@/components/CartDrawer';
+import WishlistDrawer from '@/components/WishlistDrawer';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
@@ -338,6 +339,7 @@ const About = () => {
 
       <Footer />
       <CartDrawer />
+      <WishlistDrawer />
     </div>
   );
 };

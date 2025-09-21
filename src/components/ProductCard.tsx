@@ -2,6 +2,7 @@ import { Heart, ShoppingCart, Star, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useCartStore } from '@/store/cartStore';
+import { useWishlistStore } from '@/store/wishlistStore';
 import { useState } from 'react';
 
 interface ProductCardProps {
@@ -13,6 +14,8 @@ interface ProductCardProps {
   rating: number;
   isNew?: boolean;
   isSale?: boolean;
+  category?: string;
+  artist?: string;
 }
 
 const ProductCard = ({ 
@@ -23,13 +26,18 @@ const ProductCard = ({
   image, 
   rating, 
   isNew, 
-  isSale 
+  isSale,
+  category,
+  artist
 }: ProductCardProps) => {
-  const { addItem } = useCartStore();
+  const { addItem: addToCart } = useCartStore();
+  const { addItem: addToWishlist, removeItem: removeFromWishlist, isInWishlist } = useWishlistStore();
   const [isAdded, setIsAdded] = useState(false);
   
+  const isWishlisted = isInWishlist(id);
+  
   const handleAddToCart = () => {
-    addItem({
+    addToCart({
       id,
       name,
       price,
@@ -39,6 +47,23 @@ const ProductCard = ({
     
     setIsAdded(true);
     setTimeout(() => setIsAdded(false), 2000);
+  };
+
+  const handleToggleWishlist = () => {
+    if (isWishlisted) {
+      removeFromWishlist(id);
+    } else {
+      addToWishlist({
+        id,
+        name,
+        price,
+        originalPrice,
+        image,
+        category,
+        artist,
+        rating
+      });
+    }
   };
 
   return (
@@ -61,9 +86,14 @@ const ProductCard = ({
       <Button 
         size="icon" 
         variant="outline"
-        className="absolute top-4 right-4 z-10 bg-white border-2 border-black hover:bg-pink-100"
+        className={`absolute top-4 right-4 z-10 border-2 border-black transition-all ${
+          isWishlisted 
+            ? 'bg-red-500 text-white hover:bg-red-600' 
+            : 'bg-white text-black hover:bg-pink-100'
+        }`}
+        onClick={handleToggleWishlist}
       >
-        <Heart className="h-4 w-4" />
+        <Heart className={`h-4 w-4 ${isWishlisted ? 'fill-current' : ''}`} />
       </Button>
       
       {/* Product Image */}
@@ -76,6 +106,13 @@ const ProductCard = ({
         {/* Comic-style overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
       </div>
+      
+      {/* Artist (if applicable) */}
+      {artist && (
+        <p className="handwritten text-sm text-orange-500 font-bold mb-2">
+          by {artist}
+        </p>
+      )}
       
       {/* Rating Stars */}
       <div className="flex items-center gap-1 mb-3">

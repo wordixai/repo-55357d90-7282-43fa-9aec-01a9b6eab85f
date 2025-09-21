@@ -4,6 +4,7 @@ import ProductGrid from '@/components/ProductGrid';
 import Newsletter from '@/components/Newsletter';
 import Footer from '@/components/Footer';
 import CartDrawer from '@/components/CartDrawer';
+import WishlistDrawer from '@/components/WishlistDrawer';
 
 const Index = () => {
   return (
@@ -14,6 +15,7 @@ const Index = () => {
       <Newsletter />
       <Footer />
       <CartDrawer />
+      <WishlistDrawer />
     </div>
   );
 };
