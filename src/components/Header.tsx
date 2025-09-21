@@ -2,10 +2,12 @@ import { ShoppingCart, Heart, Search, Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useCartStore } from '@/store/cartStore';
+import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
   const { toggleCart, getTotalItems } = useCartStore();
   const totalItems = getTotalItems();
+  const location = useLocation();
 
   return (
     <header className="bg-gradient-to-r from-orange-400 via-pink-400 to-yellow-400 comic-dots relative overflow-hidden">
@@ -22,18 +24,34 @@ const Header = () => {
             <Button variant="ghost" size="icon" className="md:hidden text-white">
               <Menu className="h-6 w-6" />
             </Button>
-            <h1 className="comic-title text-4xl md:text-5xl text-white">
-              POP SHOP
-            </h1>
+            <Link to="/">
+              <h1 className="comic-title text-4xl md:text-5xl text-white hover:text-yellow-200 transition-colors cursor-pointer">
+                POP SHOP
+              </h1>
+            </Link>
           </div>
           
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#" className="handwritten text-xl text-white hover:text-yellow-200 transition-colors">
+            <Link 
+              to="/" 
+              className={`handwritten text-xl transition-colors ${
+                location.pathname === '/' 
+                  ? 'text-yellow-200 font-bold' 
+                  : 'text-white hover:text-yellow-200'
+              }`}
+            >
               Home
-            </a>
-            <a href="#" className="handwritten text-xl text-white hover:text-yellow-200 transition-colors">
+            </Link>
+            <Link 
+              to="/fashion" 
+              className={`handwritten text-xl transition-colors ${
+                location.pathname === '/fashion' 
+                  ? 'text-yellow-200 font-bold' 
+                  : 'text-white hover:text-yellow-200'
+              }`}
+            >
               Fashion
-            </a>
+            </Link>
             <a href="#" className="handwritten text-xl text-white hover:text-yellow-200 transition-colors">
               Art
             </a>
