@@ -1,6 +1,8 @@
-import { Heart, ShoppingCart, Star } from 'lucide-react';
+import { Heart, ShoppingCart, Star, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { useCartStore } from '@/store/cartStore';
+import { useState } from 'react';
 
 interface ProductCardProps {
   id: number;
@@ -14,6 +16,7 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ 
+  id,
   name, 
   price, 
   originalPrice, 
@@ -22,6 +25,22 @@ const ProductCard = ({
   isNew, 
   isSale 
 }: ProductCardProps) => {
+  const { addItem } = useCartStore();
+  const [isAdded, setIsAdded] = useState(false);
+  
+  const handleAddToCart = () => {
+    addItem({
+      id,
+      name,
+      price,
+      originalPrice,
+      image
+    });
+    
+    setIsAdded(true);
+    setTimeout(() => setIsAdded(false), 2000);
+  };
+
   return (
     <div className="pop-frame bg-white p-6 relative group">
       {/* Badges */}
@@ -90,11 +109,26 @@ const ProductCard = ({
       
       {/* Add to Cart Button */}
       <Button 
-        className="w-full bounce-btn bg-gradient-to-r from-orange-400 to-pink-400 text-white border-2 border-black hover:from-orange-500 hover:to-pink-500 transform hover:scale-105 transition-all"
+        className={`w-full bounce-btn border-2 border-black transform hover:scale-105 transition-all ${
+          isAdded 
+            ? 'bg-green-500 text-white hover:bg-green-600' 
+            : 'bg-gradient-to-r from-orange-400 to-pink-400 text-white hover:from-orange-500 hover:to-pink-500'
+        }`}
         size="lg"
+        onClick={handleAddToCart}
+        disabled={isAdded}
       >
-        <ShoppingCart className="h-4 w-4 mr-2" />
-        ADD TO CART!
+        {isAdded ? (
+          <>
+            <Check className="h-4 w-4 mr-2" />
+            ADDED!
+          </>
+        ) : (
+          <>
+            <ShoppingCart className="h-4 w-4 mr-2" />
+            ADD TO CART!
+          </>
+        )}
       </Button>
       
       {/* Comic-style effects */}

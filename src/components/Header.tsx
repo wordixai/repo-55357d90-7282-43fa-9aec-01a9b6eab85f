@@ -1,8 +1,12 @@
 import { ShoppingCart, Heart, Search, Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { useCartStore } from '@/store/cartStore';
 
 const Header = () => {
+  const { toggleCart, getTotalItems } = useCartStore();
+  const totalItems = getTotalItems();
+
   return (
     <header className="bg-gradient-to-r from-orange-400 via-pink-400 to-yellow-400 comic-dots relative overflow-hidden">
       <div className="absolute inset-0 opacity-20">
@@ -51,11 +55,17 @@ const Header = () => {
             <Button size="icon" className="bg-white text-black hover:bg-gray-100">
               <Heart className="h-5 w-5" />
             </Button>
-            <Button size="icon" className="bg-white text-black hover:bg-gray-100 relative">
+            <Button 
+              size="icon" 
+              className="bg-white text-black hover:bg-gray-100 relative"
+              onClick={toggleCart}
+            >
               <ShoppingCart className="h-5 w-5" />
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center handwritten">
-                3
-              </span>
+              {totalItems > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center handwritten animate-bounce">
+                  {totalItems}
+                </span>
+              )}
             </Button>
           </div>
         </div>
