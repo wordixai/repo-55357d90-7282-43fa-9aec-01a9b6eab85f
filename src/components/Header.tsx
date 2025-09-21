@@ -17,9 +17,6 @@ const Header = () => {
       {/* Animated Background */}
       <div className="absolute inset-0 bg-gradient-to-r from-orange-400 via-pink-400 via-purple-400 to-yellow-400 animate-gradient-x"></div>
       
-      {/* Comic Dots Pattern */}
-      <div className="absolute inset-0 comic-dots opacity-40"></div>
-      
       {/* Floating Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-2 left-10 w-6 h-6 bg-blue-500 rounded-full animate-bounce delay-100"></div>
